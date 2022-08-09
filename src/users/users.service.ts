@@ -19,6 +19,18 @@ export class UsersService {
     }
 
     getUser(id:string){
-        return this.users.find((u)=>u.id===id);
+        return this.getUserById(id)[0];
+    }
+    updateUser(userId:string,name:string,age:number,surname:string,email:string){
+        const [targetUser,index ] = this.getUserById(id);
+
+    }
+    private getUserById(id:string){
+        const index = this.users.findIndex(u => u.id ===id);
+        return [this.users[index],index];  
     }
 }
+
+
+    
+
