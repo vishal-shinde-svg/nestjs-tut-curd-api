@@ -22,11 +22,22 @@ export class UsersService {
         return this.getUserById(id)[0];
     }
     updateUser(userId:string,name:string,age:number,surname:string,email:string){
-        const [targetUser,index ] = this.getUserById(id);
+        const [targetUser,index ] = this.getUserById(userId);
+        const nup = {...targetUser,name,age,surname,email};
+        const newUser = new user(userId,nup.name,nup.age,nup.surname,nup.email);
+        this.users[index]= newUser;
+        return newUser;
+
 
     }
-    private getUserById(id:string){
-        const index = this.users.findIndex(u => u.id ===id);
+    deleteUser(id:string){
+        const [target, index] = this.getUserById(id);
+        this.users.splice(index,1)
+    } 
+
+
+    private getUserById(userId:string):[user,number]{
+        const index = this.users.findIndex(u => u.id ===userId);
         return [this.users[index],index];  
     }
 }
