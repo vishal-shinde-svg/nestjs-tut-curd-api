@@ -8,6 +8,10 @@ export class UsersController {
     getUsers() {
         return "Hello";
     }
+
+    // @Put(@Param) {
+        
+    //  }
     @Post()
     insertUser(
         @Body('name') name: string,
